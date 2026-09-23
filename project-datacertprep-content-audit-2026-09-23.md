@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-22T23:42:55.509Z
+  modified: 2026-09-23T00:02:39.907Z
 ---
 
 Matthieu ran an independent Codex-based review ("ASTRA 6") of DataCertPrep
@@ -95,6 +95,22 @@ distractors, validate with held-out questions, (3) SEO/trust — clean
 sitemap, add guide previews, fix structured data, slow down article
 publishing until sourcing/review process exists.
 
-**Not yet done — explicitly deferred by Matthieu to a future session** (as
-of 2026-09-23, same conversation this was logged in): creating a global
-`~/.claude/CLAUDE.md`, and acting on any of the fixes above.
+**Status as of 2026-09-23**: Matthieu asked me to fix a subset of this the
+same session — confirmed factual errors, SEO/structured-data issues, and the
+AI-103 article. Done and shipped as
+[PR #47](https://github.com/MatthieudeLaMettrie/DataCertPrep/pull/47) on
+branch `fix/content-accuracy-audit-2026-09-23` (pushed, PR open, not yet
+merged as of this writing — check PR status before assuming it's live).
+Fixed: AWS DEA-C01 (Kinesis/Firehose), DP-700 (KQL joins, weight claim),
+GH-300 (stale guide title/weight), dbt (wrong contract-validation answer
+key), sitemap (removed login-gated URLs), Question JSON-LD (all correct
+answers for multi-answer questions), FAQPage JSON-LD removed sitewide.
+
+**Deliberately NOT done, still open**: the systemic answer-length/position
+bias across generated questions (69% longest-option correlation in the
+sample — this needs a bank-wide regeneration/rebalancing pass, bigger than
+a targeted fix) — and reorganizing GH-300's PR/code-review sections that are
+currently filed under the "privacy/safeguards" domain guide but describe a
+different topic (only the stale title/weight was fixed, not the structural
+misplacement). Also still open: creating a global `~/.claude/CLAUDE.md`
+(unrelated, separately deferred by Matthieu).
