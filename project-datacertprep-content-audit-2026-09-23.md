@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-23T00:35:49.770Z
+  modified: 2026-09-23T10:32:18.988Z
 ---
 
 Matthieu ran an independent Codex-based review ("ASTRA 6") of DataCertPrep
@@ -119,6 +119,19 @@ command resumes (files with `rebalancedWith` are skipped). Nothing imported
 to prod yet. The run also flagged 104 real accuracy concerns (multi-answer
 questions with extra defensible answers, stale AI-tool facts) in
 `docs/audits/question-rebalance-concerns.md` — needs review.
+
+**Update (end of 2026-09-23)**: Matthieu said the Opus rewrite cost "way too
+much" and then "don't use credit" — do NOT run any API-spending mode of
+rebalance-questions.ts again without his explicit new go-ahead. Final state
+on `fix/answer-bias` (commit 77b24ca, not pushed, not imported to prod):
+59 files fully rebalanced by Opus; free `--shuffle-only` shuffled 3,368
+letter-free questions (verified 0 mismatches). Bank positions now
+A32/B39/C18/D12, longest-correct still ~66%. `--explanations-only` (Haiku)
+exists but was never run. Also: Windows now blocks esbuild.exe (EPERM), so
+`npx tsx` silently does nothing; run scripts with `node --import <hook>`
+(adds `.ts` to extensionless imports) — the hook is not in the repo.
+Stopping a background xargs run did NOT kill its node children; kill by
+command line via PowerShell.
 
 **Also still open**: reorganizing GH-300's PR/code-review sections that are
 currently filed under the "privacy/safeguards" domain guide but describe a
