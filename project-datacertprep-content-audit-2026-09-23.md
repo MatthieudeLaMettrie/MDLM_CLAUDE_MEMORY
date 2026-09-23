@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-23T00:05:21.531Z
+  modified: 2026-09-23T00:28:26.389Z
 ---
 
 Matthieu ran an independent Codex-based review ("ASTRA 6") of DataCertPrep
@@ -105,10 +105,18 @@ GH-300 (stale guide title/weight), dbt (wrong contract-validation answer
 key), sitemap (removed login-gated URLs), Question JSON-LD (all correct
 answers for multi-answer questions), FAQPage JSON-LD removed sitewide.
 
-**Deliberately NOT done, still open**: the systemic answer-length/position
-bias across generated questions (69% longest-option correlation in the
-sample — this needs a bank-wide regeneration/rebalancing pass, bigger than
-a targeted fix) — and reorganizing GH-300's PR/code-review sections that are
+**Answer bias — measured bank-wide 2026-09-23** (`scripts/audit-answer-bias.ts`):
+9,343 single-answer questions, correct = longest 70%, positions A35/B47/C15/D2;
+ten certs 100% "A". Cause: generator prompt never constrained it and options
+were never shuffled. Branch `fix/answer-bias` (commit 56ecab8, not pushed):
+generator fixed + `scripts/rebalance-questions.ts` (rewrites distractors +
+letter-free explanations, stem/correct answer fixed so ids stable, then
+seeded shuffle). Pilot databricks-ml-professional: 97%→33% longest,
+positions balanced. Note: claude-opus-5-5 rejects forced tool_choice — use
+`auto`. Full-bank run (~1,400 API calls) awaiting Matthieu's go-ahead; then
+per-cert `import-content.ts --publish` to prod.
+
+**Also still open**: reorganizing GH-300's PR/code-review sections that are
 currently filed under the "privacy/safeguards" domain guide but describe a
 different topic (only the stale title/weight was fixed, not the structural
 misplacement). Also still open: creating a global `~/.claude/CLAUDE.md`
