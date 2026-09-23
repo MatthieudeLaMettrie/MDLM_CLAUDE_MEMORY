@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-23T00:28:26.389Z
+  modified: 2026-09-23T00:35:49.770Z
 ---
 
 Matthieu ran an independent Codex-based review ("ASTRA 6") of DataCertPrep
@@ -113,8 +113,12 @@ generator fixed + `scripts/rebalance-questions.ts` (rewrites distractors +
 letter-free explanations, stem/correct answer fixed so ids stable, then
 seeded shuffle). Pilot databricks-ml-professional: 97%→33% longest,
 positions balanced. Note: claude-opus-5-5 rejects forced tool_choice — use
-`auto`. Full-bank run (~1,400 API calls) awaiting Matthieu's go-ahead; then
-per-cert `import-content.ts --publish` to prod.
+`auto`. Full run approved 2026-09-23 but stopped at 40/773 files when the
+Anthropic API credit balance ran out (commit 74172d6). Re-running the same
+command resumes (files with `rebalancedWith` are skipped). Nothing imported
+to prod yet. The run also flagged 104 real accuracy concerns (multi-answer
+questions with extra defensible answers, stale AI-tool facts) in
+`docs/audits/question-rebalance-concerns.md` — needs review.
 
 **Also still open**: reorganizing GH-300's PR/code-review sections that are
 currently filed under the "privacy/safeguards" domain guide but describe a
