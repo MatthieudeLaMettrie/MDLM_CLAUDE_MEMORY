@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-23T00:02:39.907Z
+  modified: 2026-09-23T00:05:21.531Z
 ---
 
 Matthieu ran an independent Codex-based review ("ASTRA 6") of DataCertPrep
@@ -98,9 +98,8 @@ publishing until sourcing/review process exists.
 **Status as of 2026-09-23**: Matthieu asked me to fix a subset of this the
 same session — confirmed factual errors, SEO/structured-data issues, and the
 AI-103 article. Done and shipped as
-[PR #47](https://github.com/MatthieudeLaMettrie/DataCertPrep/pull/47) on
-branch `fix/content-accuracy-audit-2026-09-23` (pushed, PR open, not yet
-merged as of this writing — check PR status before assuming it's live).
+[PR #47](https://github.com/MatthieudeLaMettrie/DataCertPrep/pull/47),
+squash-merged to `master` 2026-09-23 — live in prod via Vercel auto-deploy.
 Fixed: AWS DEA-C01 (Kinesis/Firehose), DP-700 (KQL joins, weight claim),
 GH-300 (stale guide title/weight), dbt (wrong contract-validation answer
 key), sitemap (removed login-gated URLs), Question JSON-LD (all correct
