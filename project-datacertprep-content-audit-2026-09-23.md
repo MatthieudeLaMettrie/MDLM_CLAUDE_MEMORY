@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-23T10:32:18.988Z
+  modified: 2026-09-23T11:02:25.826Z
 ---
 
 Matthieu ran an independent Codex-based review ("ASTRA 6") of DataCertPrep
@@ -124,6 +124,9 @@ questions with extra defensible answers, stale AI-tool facts) in
 much" and then "don't use credit" — do NOT run any API-spending mode of
 rebalance-questions.ts again without his explicit new go-ahead. Final state
 on `fix/answer-bias` (commit 77b24ca, not pushed, not imported to prod):
+[later: merged as PR #49 and imported to prod for all 47 certs; read-back
+check 11,013/11,013 questions match. DP-700 and PL-300 each have 1 stale
+duplicate published question (pre-existing) — fix with `--prune`, not done.]
 59 files fully rebalanced by Opus; free `--shuffle-only` shuffled 3,368
 letter-free questions (verified 0 mismatches). Bank positions now
 A32/B39/C18/D12, longest-correct still ~66%. `--explanations-only` (Haiku)
