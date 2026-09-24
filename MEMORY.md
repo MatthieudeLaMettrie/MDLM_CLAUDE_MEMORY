@@ -18,6 +18,11 @@ Organized by topic folder. General (cross-project) files stay at the root.
 - [FEI infra reference](FEI/reference-fei-infra.md) — Firebase project, domains, DNS host, email provider, website repo/deploy process
 - `FEI/sessions/` — dated session journals
 
+**Truth & Testimony** (`TruthAndTestimony/`)
+- [Truth & Testimony project](TruthAndTestimony/project-truth-and-testimony.md) — Christian apologetics site (EN/FR, Next/Vercel, live at truth-testimony.vercel.app) + kids' anime brand; decisions, design, rules
+- [Truth & Testimony TO-DO](TruthAndTestimony/project-truth-and-testimony-todo.md) — open items (domain, Amazon, YouTube, anime); read first in any T&T session
+- `TruthAndTestimony/sessions/` — dated session journals
+
 **IT — Website** (`IT-Website/`)
 - [DNS basics glossary](IT-Website/reference-dns-basics.md) — A/CNAME/MX/TXT/SPF/DKIM/TTL/apex explained plainly
 
