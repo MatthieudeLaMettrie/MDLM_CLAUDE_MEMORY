@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-22T23:21:38.241Z
+  modified: 2026-09-24T05:52:27.921Z
 ---
 
 **Native memory (Claude Code's own feature, not something I built)**: Claude
@@ -28,9 +28,25 @@ layer on top of it.
 - Changes get committed and pushed like any other repo, giving Matthieu a
   version history and an off-machine backup of what Claude knows about him
   and his projects.
-- A `sessions/` subfolder holds dated journal entries (one per significant
-  session), for narrative history that doesn't belong in the always-loaded
-  topic files.
+- A `sessions/` subfolder (one per topic, e.g. `FEI/sessions/`,
+  `DataCertPrep/sessions/`) holds dated journal entries, for narrative
+  history that doesn't belong in the always-loaded topic files.
+
+**Topic folders (added 2026-09-24)**: topic files live under per-topic
+directories — `FEI/`, `DataCertPrep/`, `IT-Website/`, `IT-AI/` — with
+genuinely cross-project files (`user-profile.md`,
+`feedback-autonomy-and-verification-bar.md`, `feedback-api-spend.md`)
+staying at the repo root alongside `MEMORY.md`. `MEMORY.md`'s links are the
+only thing that need to reflect a file's path; internal `[[slug]]`
+cross-links between memory files are resolved by name, not path, so they
+didn't need updating when files moved. One caveat I noticed but haven't
+fully confirmed: root-level memory files pick up auto-maintained frontmatter
+fields (`metadata.node_type`, `originSessionId`, `modified`) that files
+under `sessions/` never get — possibly evidence of some indexing step keyed
+to directory depth or location. If a topic file stops getting its
+frontmatter refreshed after being moved into a topic folder, that's the
+likely cause; worth a closer look if memory recall seems to degrade for a
+moved file.
 
 **How this differs from his Codex setup** (`MDLM_CODEX_MEMORY`, also
 private): that repo uses `AGENTS.md` as the instructions file Codex reads
