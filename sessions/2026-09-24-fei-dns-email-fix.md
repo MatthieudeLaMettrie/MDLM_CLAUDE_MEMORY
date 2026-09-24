@@ -43,8 +43,8 @@ priority, 10 instead of 1) plus a leftover inert
 `ms18838980.msv1.invalid` record (a Squarespace default placeholder, not an
 actual Microsoft 365 setup) — plus **no SPF** and **no DKIM** at all.
 
-Fix applied to `frenchexpatsinvestment.com` (confirmed Complete in Google
-Admin by end of session):
+Fix applied to both `frenchexpatsinvestment.com` and
+`frenchexpatsinvestment.com.au` (same steps on each zone in Squarespace):
 - Deleted the `ms18838980.msv1.invalid` MX record.
 - Changed the remaining MX priority from 10 to 1.
 - Generated a DKIM key in Google Admin (Gmail → Authenticate email) and
@@ -53,14 +53,14 @@ Admin by end of session):
   (checked first that no duplicate SPF TXT existed — a domain can only have
   one).
 
+**Resolved**: Google Admin's Manage domains page now shows "All ok" for
+email setup status on both `frenchexpatsinvestment.com` (primary) and
+`frenchexpatsinvestment.com.au` (secondary) — confirmed 2026-09-24.
+
 **Open items for next session:**
 1. Confirm `frenchexpatsinvestment.com.au` apex now shows "Connected" in
-   Firebase Hosting (not just "Needs setup").
-2. Repeat the exact same MX-cleanup / SPF / DKIM fix on
-   `frenchexpatsinvestment.com.au` — as of end of session it still had the
-   duplicate/wrong-priority MX and was missing SPF and DKIM.
-3. Google's own admin page notes DNS changes can take up to 72 hours to be
-   rechecked — don't be alarmed if status doesn't flip immediately.
+   Firebase Hosting (not just "Needs setup") — this was the original issue
+   that started the session; not yet re-checked since the DNS fix.
 
 Also see [[reference-dns-basics]] — a plain-language DNS/A/CNAME/MX/TXT/
 SPF/DKIM glossary written this session at Matthieu's request, using this

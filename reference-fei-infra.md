@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 5bec0e83-6fe8-42ff-93f7-9ff21a4aeb9c
-  modified: 2026-09-24T02:03:10.937Z
+  modified: 2026-09-24T04:00:39.086Z
 ---
 
 **Project**: French Expats Investment (FEI) — website at
@@ -47,8 +47,7 @@ conflicting with Google's MX record.
 - `TXT _acme-challenge → ...` (Firebase SSL cert verification — same
   condition)
 
-As of 2026-09-24: `frenchexpatsinvestment.com` has this full correct set
-(MX/SPF/DKIM all Complete in Google Admin). `frenchexpatsinvestment.com.au`
-still needed the same MX/SPF/DKIM cleanup and its Firebase apex verification
-was pending re-check after a DNS fix — see
-[[2026-09-24-fei-dns-email-fix]] for current status.
+As of 2026-09-24: both domains have this full correct MX/SPF/DKIM set
+(Google Admin shows "All ok" email setup status for both). Firebase apex
+verification for `frenchexpatsinvestment.com.au` was still pending re-check
+at last update — see [[2026-09-24-fei-dns-email-fix]] for current status.
