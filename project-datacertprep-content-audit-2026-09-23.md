@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-23T11:02:25.826Z
+  modified: 2026-09-24T00:19:02.549Z
 ---
 
 Matthieu ran an independent Codex-based review ("ASTRA 6") of DataCertPrep
@@ -135,6 +135,12 @@ exists but was never run. Also: Windows now blocks esbuild.exe (EPERM), so
 (adds `.ts` to extensionless imports) — the hook is not in the repo.
 Stopping a background xargs run did NOT kill its node children; kill by
 command line via PowerShell.
+
+**2026-09-24 (no API)**: PR #50 merged + imported (11,013/11,013 verified):
+A–D labels in practice/exam UI; `--remap-letters` shuffled 4,767 more
+questions with explanation letters rewritten. Positions now A26/B29/C23/D22.
+Remaining free ideas offered: fix the 139 concerns by hand, archive 2 stale
+dupes (DP-700/PL-300), Astronomer syntax, public guide previews.
 
 **Also still open**: reorganizing GH-300's PR/code-review sections that are
 currently filed under the "privacy/safeguards" domain guide but describe a
