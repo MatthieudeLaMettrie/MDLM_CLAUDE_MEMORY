@@ -5,13 +5,17 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-24T04:02:55.857Z
+  modified: 2026-09-24T06:25:34.479Z
 ---
 
 - **Repo**: github.com/MatthieudeLaMettrie/DataCertPrep (private). Local
   clone: `C:\Users\mettrma\Documents\GitHub\DataCertPrep`.
 - **Production**: www.datacert-prep.com, Vercel project
   `matts-projects-6fc9737c/datacertprep`. Auto-deploys on push to `master`.
+- **Monitoring** (all in `app/layout.tsx`): Google Analytics
+  (`components/analytics/GoogleAnalytics`), Vercel Speed Insights (PR #48,
+  enabled), Vercel Web Analytics (PR #51 — enable in Vercel dashboard). All
+  three are real-user; none are measured in dev.
 - **Database**: Neon Postgres. `.env.vercel-prod` in the repo root (gitignored,
   local only) holds the live prod `DATABASE_URL` — he explicitly said to
   leave this file in place for reuse across sessions. Prisma CLI scripts need

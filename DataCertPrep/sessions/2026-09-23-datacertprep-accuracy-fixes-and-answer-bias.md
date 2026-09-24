@@ -14,6 +14,8 @@ Open work is tracked in [[project-datacertprep-todo]].
 | 09-23 | Added Vercel Speed Insights | PR #48 (merged 09-23) |
 | 09-23 | Measured answer bias bank-wide; built rebalance tooling; Opus rewrite (partial, stopped for cost); free shuffle | PR #49 (merged 09-23), imported to prod |
 | 09-24 | A–D labels in practice/exam UI; free letter-remap shuffle | PR #50 (merged 09-24), imported to prod |
+| 09-24 | Added Vercel Web Analytics | PR #51 (merged 09-24) |
+| 09-24 | Wrote dated to-do + this journal in the memory repo | [[project-datacertprep-todo]] |
 
 ## 1. ASTRA-6 audit fixes (PR #47)
 
@@ -46,6 +48,11 @@ standing evidence bar in [[feedback-autonomy-and-verification-bar]]):
 
 `npm i @vercel/speed-insights`, `<SpeedInsights />` in `app/layout.tsx`.
 Matthieu enabled it in the Vercel dashboard.
+
+**Web Analytics (PR #51, 09-24)** — same pattern: `npm i @vercel/analytics`,
+`import { Analytics } from "@vercel/analytics/next"` + `<Analytics />` next to
+`<SpeedInsights />` in `app/layout.tsx`. Merged after Vercel checks passed.
+Collects nothing until enabled in Vercel (project → Analytics → Enable).
 
 ## 3. Answer bias (PRs #49, #50)
 
