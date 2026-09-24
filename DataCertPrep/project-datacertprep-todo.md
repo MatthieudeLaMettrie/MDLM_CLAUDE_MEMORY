@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d2649431-2b1c-4569-b6af-6a7ec31f61b4
-  modified: 2026-09-24T04:02:32.202Z
+  modified: 2026-09-24T05:53:41.428Z
 ---
 
 Last updated **2026-09-24**. Tick items off (move to "Done") rather than
@@ -72,3 +72,4 @@ deleting, so the thread survives. "Free" = no Anthropic API credit (see
 | 09-23 | Vercel Speed Insights (PR #48), enabled in dashboard |
 | 09-23 | Answer-bias tooling, partial Opus rewrite, free shuffle (PR #49), imported |
 | 09-24 | A–D labels + letter-remap shuffle (PR #50), imported, 11,013/11,013 verified |
+| 09-24 | Vercel Web Analytics (PR #51) merged — **enable Analytics in the Vercel dashboard** if not yet done |
