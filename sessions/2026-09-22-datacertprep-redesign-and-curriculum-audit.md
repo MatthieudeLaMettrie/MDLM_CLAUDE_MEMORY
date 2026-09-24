@@ -57,3 +57,7 @@ password into chat directly (twice, across this and a prior session) despite
 a suggested safer file-write pattern. Handled without echoing it back;
 flagged plainly; he rotated the password later in the session. Full detail
 in [[feedback-autonomy-and-verification-bar]].
+
+---
+
+**Continued in** [2026-09-23 → 24 session](2026-09-23-datacertprep-accuracy-fixes-and-answer-bias.md) (ASTRA-6 fixes, answer bias, cost incident). Open work: [[project-datacertprep-todo]].
