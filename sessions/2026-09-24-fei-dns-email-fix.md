@@ -65,3 +65,40 @@ email setup status on both `frenchexpatsinvestment.com` (primary) and
 Also see [[reference-dns-basics]] — a plain-language DNS/A/CNAME/MX/TXT/
 SPF/DKIM glossary written this session at Matthieu's request, using this
 exact incident as the worked example.
+
+**Later same session — website content/nav changes, in the actual
+FEI-Website repo** (see [[reference-fei-infra]] for repo/deploy details;
+this part used the codebase, not just DNS consoles):
+
+1. **Public contact email**: `matthieu@frenchexpatsinvestment.com` →
+   `info@frenchexpatsinvestment.com`, replaced in `app/root.tsx` (JSON-LD
+   schema), `components/Footer.tsx`, `pages/Contact.tsx` (mailto link +
+   button text), and `pages/PrivacyPolicy.tsx` (x2). Left the bot commit
+   identities (`auto-publish@...`, `etf-data-bot@...` in
+   `.github/workflows/*.yml`) untouched — different purpose, not asked
+   about. Deployed and confirmed live via WebFetch on `/contact`.
+
+2. **Nav tab reorder + Analyse IA merge**, from a hand-annotated
+   screenshot. New `components/Navbar.tsx` order: Accueil, ETF Data,
+   Articles & Présentations, Australian Articles (renamed from
+   "Australian Finance Guides"), Outils, Services, Investissements, A
+   propos. "Analyse IA" was removed as a standalone top-level tab per
+   Matthieu's instruction that Outils "should integrate" it — implemented
+   by adding it as a new tool card ("Bilan Patrimonial Spécialisé France")
+   inside `pages/AppsGallery.tsx` (the Outils page), rather than building
+   dropdown-menu infrastructure that didn't otherwise exist in the navbar.
+   `/analyse` route and its other existing links (footer, homepage CTA,
+   FAQ, Services page) were left untouched. Deployed and confirmed live.
+
+Both changes were committed straight to `main` (not the `feat/
+asx50-data-prototype` branch that happened to be checked out), each
+followed by manually triggering the `Deploy Live Site` Action and
+verifying the result live with WebFetch before reporting done.
+
+**Process note**: Claude Code's auto-mode classifier blocked `gh workflow
+run deploy-live.yml` outright (both attempts, no reason given) — this
+seems to apply to *any* `gh workflow run` in this repo, not just this
+specific deploy. Matthieu ran it himself via the `!` shell-passthrough
+each time; Claude then polled the run with `gh run watch` in the
+background and checked the live site after. Expect to repeat this
+handoff for future deploys unless the permission is changed.

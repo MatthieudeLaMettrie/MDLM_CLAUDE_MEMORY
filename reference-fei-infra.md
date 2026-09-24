@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 5bec0e83-6fe8-42ff-93f7-9ff21a4aeb9c
-  modified: 2026-09-24T04:00:39.086Z
+  modified: 2026-09-24T05:46:29.584Z
 ---
 
 **Project**: French Expats Investment (FEI) — website at
@@ -28,6 +28,19 @@ They are two entirely separate domains/zones despite the near-identical name
 truncates long names identically for both. Always check the browser URL or
 the exact dropdown value before editing records. See
 [[2026-09-24-fei-dns-email-fix]] for the incident this caused.
+
+**Website source repo**: `C:\Users\mettrma\Documents\GitHub\FEI-Website`
+(GitHub: `MatthieudeLaMettrie/FEI-Website`, private). React Router app.
+Default/deploy branch is `main`. **Deploys are manual, not automatic on
+push** — `main` can be updated freely without going live; a human (or
+Matthieu via the `!` shell-passthrough, since Claude Code's auto-mode
+classifier blocks `gh workflow run` for this repo) must run the
+`Deploy Live Site` GitHub Action (`workflow_dispatch` only), which builds
+with `npm run build` and runs `firebase deploy --only hosting --project
+fei-website-f16b0`. Matthieu also keeps work in progress on feature
+branches (e.g. `feat/asx50-data-prototype`) that get merged to `main`
+separately — always check which branch is checked out and diff against
+`origin/main` before assuming local `main` is current.
 
 **Email**: Google Workspace (Gmail), managed at
 `admin.google.com/ac/domains/manage`, not Microsoft 365 — despite a stray
