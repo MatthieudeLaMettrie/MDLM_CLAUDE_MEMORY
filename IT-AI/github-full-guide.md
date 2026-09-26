@@ -271,72 +271,127 @@ flowchart TD
 
 ## Part 7 — Preparing for the GH-600 exam
 
-> **Important caveat:** GitHub's certification numbering has shifted over
-> time and this space evolves, so **always cross-check the current exam
-> number and objectives on GitHub's official certifications page**
-> (`github.com/certification`) before relying on any specific number.
-> As of the most recent naming, GitHub's certification family generally
-> looks like:
-> - **GH-900** — GitHub Foundations (broad intro: repos, PRs, Issues, basic Actions)
-> - **GH-200** — GitHub Actions (deep dive: workflows, runners, security)
-> - **GH-300** — GitHub Copilot (AI pair programming) *(numbering for the Copilot exam has changed across versions — verify current code)*
-> - **GH-500** — GitHub Advanced Security (CodeQL, secret scanning, dependency review)
-> - **GH-600** — most recently associated with the **GitHub Copilot certification**, testing practical use of Copilot (Chat, code completion, agent mode, prompt engineering for code, responsible AI use) rather than plain repo/Actions mechanics.
->
-> Since the number-to-topic mapping is the part most likely to have moved
-> since this was written, **verify the current GH-600 exam guide on
-> GitHub's site before studying** — the domains below are the general
-> shape of what these exams test either way, so they're useful prep
-> regardless of the exact current code.
+**Verified against the official Microsoft Learn study guide** (Exam GH-600,
+last updated 2026-07-09): [learn.microsoft.com/.../study-guides/gh-600](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-600).
 
-### General domains these certification exams tend to test
-1. **Git & GitHub fundamentals**
-   - Repos, branches, commits, merge strategies, conflict resolution.
-   - Forks vs. clones, upstream/origin remotes.
-2. **Collaboration workflow**
-   - Pull requests, code review process, branch protection rules.
-   - Issues, Discussions, Projects (linking work items to code).
-3. **GitHub Actions / CI-CD**
-   - Workflow syntax (events, jobs, steps, matrix, `needs`).
-   - Secrets management, environments, approvals.
-   - Reusable workflows, composite actions, self-hosted runners.
-4. **Security**
-   - Dependabot alerts/updates, secret scanning, push protection.
-   - CodeQL / code scanning basics, security policies (`SECURITY.md`).
-5. **GitHub administration** (more relevant to GH-300 Administration, but
-   often lightly touched elsewhere)
-   - Organizations, teams, permissions (read/write/admin, roles).
-   - SSO, audit logs, repository visibility settings.
-6. **If it's Copilot-focused (GH-600 as most recently defined)**
-   - How Copilot suggestions are generated and how context (open files,
-     comments) shapes them.
-   - Copilot Chat usage patterns: `/explain`, `/fix`, `/tests`, inline chat.
-   - Copilot in the CLI, in PRs (Copilot code review), and "agent mode."
-   - Responsible AI: what Copilot does and doesn't guarantee (license/
-     attribution considerations, reviewing AI-suggested code before merge).
-   - Prompt-crafting best practices for getting better code suggestions.
+### What GH-600 actually is
+**GH-600: Developing in Agentic AI Systems** — this is **not** the same
+exam as GH-300 (GitHub Copilot). GH-600 is a newer, more advanced
+certification focused specifically on **building, operating, and
+governing autonomous AI coding agents** (GitHub Copilot agents, MCP
+servers, multi-agent workflows) inside real SDLC pipelines — not on
+day-to-day Copilot autocomplete usage.
+
+**Passing score:** 700+ (as with other Microsoft-administered certs).
+
+### Who it's for
+Someone with subject-matter expertise **operating, integrating,
+supervising, and governing AI agents** inside production-grade SDLC
+workflows, using GitHub as the system of record and control plane.
+Expected background: SDLC fundamentals, GitHub workflows/controls, code
+quality/security/review practices, and hands-on experience with coding
+agents (Copilot), MCP servers, and agent customization (custom
+instructions, custom agents, tools, Copilot setup steps).
+
+### The 6 skill domains (with official weightings)
+
+| # | Domain | Weight |
+|---|---|---|
+| 1 | Prepare agent architecture and SDLC processes | 15–20% |
+| 2 | Implement tool use and environment interaction | 20–25% |
+| 3 | Manage memory, state, and execution | 10–15% |
+| 4 | Perform evaluation, error analysis, and tuning | 15–20% |
+| 5 | Orchestrate multi-agent coordination | 15–20% |
+| 6 | Implement guardrails and accountability | 10–15% |
+
+#### 1. Prepare agent architecture and SDLC processes (15–20%)
+- Integrate agents into the SDLC: which steps agents should perform, common
+  agent anti-patterns, defining inputs/outputs/success criteria.
+- Separate **planning** from **action**: force agents to output a
+  structured plan, validate it, and block execution until it's approved.
+- Configure observability: autonomy levels/guardrails, inspectable
+  artifacts in standard dev tooling, human intervention without slowing
+  delivery.
+
+#### 2. Implement tool use and environment interaction (20–25%) — the biggest domain
+- Select/configure agent tools and tool **permissions**.
+- **MCP servers**: add one as a tool, configure a GitHub remote MCP
+  server, configure MCP registries and allow lists.
+- Integrate agents into dev environments: scope an agent to a repo or
+  branch, invoke it in a CI workflow, let it autonomously create branches/
+  PRs, handle environment-specific constraints.
+- Safe execution: error handling, retries, rollbacks, escalation paths,
+  traceability/accountability for agent actions.
+
+#### 3. Manage memory, state, and execution (10–15%)
+- Choose short-term vs. long-term vs. external memory; scope memory to
+  task-relevant info; define expiration/pruning/reset rules.
+- Persist agent state as durable artifacts so work can resume without
+  repeating steps; detect and correct **context drift** in long-running
+  agent tasks.
+- Share state across tools/environments while preventing conflicting or
+  stale context.
+
+#### 4. Perform evaluation, error analysis, and tuning (15–20%)
+- Define success criteria/evaluation signals (qualitative + quantitative,
+  including automated scanning tools) aligned to development intent.
+- Diagnose failures using logs, plans, traces, outputs, workflow
+  artifacts; classify root causes (reasoning errors, tool misuse, context/
+  environment issues).
+- Tune behavior: revise instructions/workflows/constraints, refine memory
+  and tool usage.
+
+#### 5. Orchestrate multi-agent coordination (15–20%)
+- Apply orchestration patterns across multiple agents; isolate agents for
+  parallel execution; resolve conflicts (overlapping code changes,
+  duplicated effort, contradictory outputs).
+- Produce audit-ready artifacts for multi-agent workflows; document
+  handoffs/decisions; do post-hoc analysis.
+- Detect stalled/degraded agents and apply recovery patterns (rollback,
+  human-in-the-loop).
+- Manage agent lifecycle inside multi-agent workflows: add, reconfigure,
+  replace, or retire agents without breaking active workflows, while
+  preserving auditability.
+
+#### 6. Implement guardrails and accountability (10–15%)
+- Classify agent actions by operational/security/compliance risk; assign
+  **autonomy levels** balancing delivery speed against compliance.
+- Guardrails: block policy-violating actions, enforce least-privilege
+  scoping, require explicit authorization for irreversible/compliance-
+  sensitive changes, and avoid approval steps that don't meaningfully
+  reduce risk.
+
+### Official prep resources
+- **Microsoft Learn paths:** *Foundations of Agentic AI in GitHub*,
+  *Designing Agent Architecture and SDLC Integration*, *Tooling, MCP, and
+  Agent Execution Environments*.
+- **GitHub Docs (mapped to each domain):** GitHub's Copilot custom-agents
+  docs, Copilot SDK custom-agents guide, Copilot memory concepts,
+  implementation-planner tutorial, cloud-agent guardrails/risk docs.
+- **Community:** GitHub Community Discussions, the GitHub Blog.
 
 ### How to prepare, practically
-1. **Do it, don't just read it.** Create a scratch repo, open real PRs
-   against yourself, break a merge on purpose and resolve the conflict,
-   write an Actions workflow from scratch (not copy-paste) until you don't
-   need the docs open.
-2. **Read the official GitHub Docs sections** for whichever exam you're
-   targeting — GitHub publishes an official *study guide/exam objectives
-   PDF* per certification; get that exact document, since it lists the
-   graded domains verbatim.
-3. **Use GitHub Skills** (`skills.github.com`) — free, official,
-   hands-on interactive courses (Actions, Copilot, security) that mirror
-   real exam scenarios.
-4. **Practice writing YAML from memory** — a large share of Actions-related
-   questions hinge on knowing workflow syntax (trigger keys, `needs`,
-   `matrix`, `if:` conditions) without an editor's autocomplete to help.
-5. **Know the "why," not just the "how"** — expect scenario questions like
-   "which merge strategy best suits this team's need for X" rather than
-   pure syntax recall.
-6. **If it is indeed Copilot-focused:** actually use Copilot daily for a
-   couple of weeks beforehand — Chat, inline suggestions, PR summaries —
-   the exam leans on familiarity with the *experience*, not just theory.
+1. **Actually build a custom agent.** Set up GitHub Copilot custom
+   instructions/custom agents in a real repo, wire up an MCP server, and
+   scope its tool permissions and allow list yourself — the "Implement
+   tool use" domain is the single biggest chunk of the exam (20–25%).
+2. **Practice the plan → approve → act loop.** Configure an agent so it
+   must output a structured plan and get it approved before touching
+   code — this exact separation ("planning vs. action") is explicitly
+   tested.
+3. **Run a multi-agent scenario.** Even a simple one — two agents touching
+   overlapping files — so you've seen firsthand what a coordination
+   conflict looks like and how rollback/human-in-the-loop recovery works.
+4. **Get comfortable reading agent artifacts**, not just writing code:
+   logs, traces, plans, and evaluation signals are how you diagnose
+   failures on this exam, not just "did the code compile."
+5. **Study the guardrails/autonomy-level framework** — expect scenario
+   questions asking you to classify an action's risk and decide whether it
+   needs human approval or can run autonomously.
+6. **Don't confuse this with GH-300** (GitHub Copilot certification, which
+   tests everyday Copilot usage — completions, Chat, `/explain`/`/fix`).
+   GH-600 assumes you already know that and tests agentic/orchestration
+   concepts on top.
 
 ---
 
@@ -352,6 +407,10 @@ flowchart TD
 - **CI** catches problems early (test/build on every PR); **CD** automates
   getting a passing build into staging/production, optionally gated by
   manual approval via Environments.
-- **GH-600 prep**: confirm the current official exam guide first (numbers
-  shift), then combine hands-on repo/Actions practice with GitHub's free
-  Skills courses — expect scenario-based questions, not just syntax recall.
+- **GH-600 = "Developing in Agentic AI Systems"** (distinct from GH-300
+  Copilot): tests building/operating/governing autonomous coding agents —
+  tool use & MCP servers (20–25%, the biggest domain), SDLC integration,
+  memory/state management, evaluation/tuning, multi-agent orchestration,
+  and guardrails/accountability. Passing score 700+. Prep by actually
+  building a custom agent with an MCP server and tool permissions, not
+  just reading docs.
