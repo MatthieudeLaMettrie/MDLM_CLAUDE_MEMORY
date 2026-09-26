@@ -20,6 +20,64 @@ Compare it to the other tools already explained:
 
 ---
 
+## Diagram: how a webhook flows
+
+```mermaid
+sequenceDiagram
+    participant You as Your Server (myapp.com)
+    participant Provider as Provider (e.g. Stripe)
+    participant User as End User
+
+    You->>Provider: 1. Register webhook URL<br/>(https://myapp.com/webhooks/stripe)
+    Note over You,Provider: Setup happens once, in advance
+
+    User->>Provider: 2. Triggers an event<br/>(e.g. makes a payment)
+    activate Provider
+    Provider->>Provider: 3. Event occurs<br/>(payment_intent.succeeded)
+    Provider->>You: 4. POST request to your URL<br/>(JSON payload + signature header)
+    deactivate Provider
+
+    activate You
+    You->>You: 5. Verify signature
+    You->>You: 6. Process event<br/>(update DB, send email, etc.)
+    You-->>Provider: 7. Respond 200 OK
+    deactivate You
+
+    Note over Provider,You: If no 200 OK received,<br/>Provider retries with backoff
+```
+
+**Plain-text version of the same flow**, if the diagram above doesn't
+render for you:
+
+```
+ Your Server                     Provider (Stripe)                End User
+ ------------                    ------------------                --------
+      |                                  |                             |
+      |--(1) register webhook URL------->|                             |
+      |     (done once, in advance)      |                             |
+      |                                  |                             |
+      |                                  |<--(2) triggers event--------|
+      |                                  |     (e.g. makes payment)    |
+      |                                  |                             |
+      |                                  |--(3) event happens          |
+      |                                  |    internally               |
+      |                                  |                             |
+      |<-(4) POST /webhooks/stripe-------|                             |
+      |    { type: "payment_intent.      |                             |
+      |      succeeded", data: {...} }   |                             |
+      |    + signature header            |                             |
+      |                                  |                             |
+   (5) verify signature                  |                             |
+   (6) process event                     |                             |
+      |                                  |                             |
+      |--(7) 200 OK--------------------->|                             |
+      |                                  |                             |
+      |          (if no 200 OK: Provider retries steps 4-7             |
+      |           a few times with increasing delay)                  |
+```
+
+---
+
 ## How it works
 
 1. **You register a URL** with the service you want notifications from
