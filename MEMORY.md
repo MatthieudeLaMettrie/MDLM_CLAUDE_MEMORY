@@ -5,6 +5,7 @@ Organized by topic folder. General (cross-project) files stay at the root.
 **General**
 - [User profile](user-profile.md) — who Matthieu is, DataCertPrep founder, how he directs work
 - [Autonomy & verification bar](feedback-autonomy-and-verification-bar.md) — when to proceed vs. pause, evidence bar for editing live data
+- [Verify with real execution](feedback-verify-with-real-execution.md) — run the real CLI/endpoint before claiming a fix works, not just typecheck/build
 - [API spend rule](feedback-api-spend.md) — never spend Anthropic API credit without explicit go-ahead + $ estimate (~$100 overrun 2026-09-23)
 
 **DataCertPrep** (`DataCertPrep/`)
@@ -22,6 +23,9 @@ Organized by topic folder. General (cross-project) files stay at the root.
 - [Truth & Testimony project](TruthAndTestimony/project-truth-and-testimony.md) — Christian apologetics site (EN/FR, Next/Vercel, live at truth-testimony.vercel.app) + kids' anime brand; decisions, design, rules
 - [Truth & Testimony TO-DO](TruthAndTestimony/project-truth-and-testimony-todo.md) — open items (domain, Amazon, YouTube, anime); read first in any T&T session
 - `TruthAndTestimony/sessions/` — dated session journals
+
+**Agentic OS** (`AgenticOS/`)
+- [Agentic OS project](AgenticOS/project-agentic-os.md) — personal AI hub; PR #1 (base app) + PR #2 (HUD dashboard, session continuation); this PC is a WORK laptop, no personal secrets here
 
 **IT — Website** (`IT-Website/`)
 - [DNS basics glossary](IT-Website/reference-dns-basics.md) — A/CNAME/MX/TXT/SPF/DKIM/TTL/apex explained plainly
