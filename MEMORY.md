@@ -24,8 +24,14 @@ Organized by topic folder. General (cross-project) files stay at the root.
 - [Truth & Testimony TO-DO](TruthAndTestimony/project-truth-and-testimony-todo.md) — open items (domain, Amazon, YouTube, anime); read first in any T&T session
 - `TruthAndTestimony/sessions/` — dated session journals
 
+**JB Newsletter** (`JB-Newsletter/`) — Birrell & Co weekly newsletter on Fabric
+- [JB newsletter on MyTurn data](JB-Newsletter/project-jb-newsletter-myturn.md) — stats moved to MyTurn tables 2026-10-02; decisions, repo note locations, open items
+
 **Agentic OS** (`AgenticOS/`)
 - [Agentic OS project](AgenticOS/project-agentic-os.md) — personal AI hub; PR #1 (base app) + PR #2 (HUD dashboard, session continuation); this PC is a WORK laptop, no personal secrets here
+
+**Data Engineering** (`DataEngineering/`)
+- [Semantic layers study (Databricks + Snowflake)](DataEngineering/project-semantic-layers-study.md) — guides + two paste-and-run labs in MDLM_CODEX_MEMORY; labs awaiting user run (2026-10-12)
 
 **IT — Website** (`IT-Website/`)
 - [DNS basics glossary](IT-Website/reference-dns-basics.md) — A/CNAME/MX/TXT/SPF/DKIM/TTL/apex explained plainly
