@@ -32,9 +32,13 @@ Organized by topic folder. General (cross-project) files stay at the root.
 
 **Data Engineering** (`DataEngineering/`)
 - [Semantic layers study (Databricks + Snowflake)](DataEngineering/project-semantic-layers-study.md) — guides + two paste-and-run labs in MDLM_CODEX_MEMORY; labs awaiting user run (2026-10-12)
+- [Data API & governance courses + security course](DataEngineering/project-data-api-governance-courses.md) — 5 full courses (Fabric/Databricks/Snowflake/BigQuery + identity/tokens/secrets), files in `DataEngineering/courses/` and `IT-Security/` (2026-10-13)
 
 **IT — Website** (`IT-Website/`)
 - [DNS basics glossary](IT-Website/reference-dns-basics.md) — A/CNAME/MX/TXT/SPF/DKIM/TTL/apex explained plainly
+
+**IT — Security** (`IT-Security/`)
+- [Cloud identity, tokens & secrets course](IT-Security/course-cloud-identity-tokens-secrets.md) — MI, SP, SA, IAM roles, Entra, OAuth/OIDC, JWTs, vaults, RBAC/RLS/OLS; 5 examples per topic
 
 **IT — AI** (`IT-AI/`)
 - [Claude memory setup](IT-AI/reference-claude-memory-setup.md) — how this repo works and how it differs from the Codex memory setup
